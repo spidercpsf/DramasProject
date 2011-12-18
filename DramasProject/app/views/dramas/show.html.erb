@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @drama.name %>
+</p>
+
+<p>
+  <b>Info:</b>
+  <%= @drama.info %>
+</p>
+
+<p>
+  <b>Cast:</b>
+  <%= @drama.cast %>
+</p>
+
+<p>
+  <b>Genre:</b>
+  <%= @drama.genre %>
+</p>
+
+<p>
+  <b>Rating:</b>
+  <%= @drama.rating %>
+</p>
+
+<p>
+  <b>Episode:</b>
+  <%= @drama.episode %>
+</p>
+
+
+<%= link_to 'Edit', edit_drama_path(@drama) %> |
+<%= link_to 'Back', dramas_path %>

@@ -1,0 +1,41 @@
+<%= form_for(@drama) do |f| %>
+  <% if @drama.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@drama.errors.count, "error") %> prohibited this drama from being saved:</h2>
+
+      <ul>
+      <% @drama.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :info %><br />
+    <%= f.text_field :info %>
+  </div>
+  <div class="field">
+    <%= f.label :cast %><br />
+    <%= f.text_field :cast %>
+  </div>
+  <div class="field">
+    <%= f.label :genre %><br />
+    <%= f.text_field :genre %>
+  </div>
+  <div class="field">
+    <%= f.label :rating %><br />
+    <%= f.text_field :rating %>
+  </div>
+  <div class="field">
+    <%= f.label :episode %><br />
+    <%= f.text_field :episode %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

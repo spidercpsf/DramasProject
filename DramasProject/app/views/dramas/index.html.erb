@@ -1,0 +1,33 @@
+<h1>Listing dramas</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Info</th>
+    <th>Cast</th>
+    <th>Genre</th>
+    <th>Rating</th>
+    <th>Episode</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @dramas.each do |drama| %>
+  <tr>
+    <td><%= drama.name %></td>
+    <td><%= drama.info %></td>
+    <td><%= drama.cast %></td>
+    <td><%= drama.genre %></td>
+    <td><%= drama.rating %></td>
+    <td><%= drama.episode %></td>
+    <td><%= link_to 'Show', drama %></td>
+    <td><%= link_to 'Edit', edit_drama_path(drama) %></td>
+    <td><%= link_to 'Destroy', drama, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Drama', new_drama_path %>
