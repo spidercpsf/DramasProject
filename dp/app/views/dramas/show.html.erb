@@ -12,7 +12,8 @@
     </p>
     <p>
       <strong>Genre:</strong>
-      <%= @drama.genre %>
+      <% gr= @drama.genre  %>
+      <%= gr.name %>
     </p>
     <p>
       <strong>Episode:</strong>
@@ -26,7 +27,11 @@
   </div>
   <div class = "dramacast">
      <center><p><strong>Cast</strong></p></center>
-     <p><%= @drama.cast %></p>
+     <p><% listCast=@drama.cast_drama %>
+    	<% listCast.each do |a| %>
+           <%= a.cast.name%> 
+        <% end %>
+     </p>
   </div>
   <div class = "numberofcomments">
     <hr class = "left"></hr>
