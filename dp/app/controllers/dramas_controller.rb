@@ -23,7 +23,7 @@ class DramasController < ApplicationController
   # GET /dramas/new
   # GET /dramas/new.xml
   def new
-    @dramapl= Drama.new
+    @drama= Drama.new
 
     respond_to do |format|
       format.html # new.html.erb
