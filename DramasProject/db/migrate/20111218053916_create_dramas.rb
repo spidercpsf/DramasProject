@@ -4,7 +4,7 @@ class CreateDramas < ActiveRecord::Migration
       t.string :name
       t.string :info
       t.string :cast
-      t.string :genre
+      t.integer :genre_id
       t.float :rating
       t.string :episode
 
