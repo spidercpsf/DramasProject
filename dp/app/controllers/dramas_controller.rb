@@ -3,7 +3,6 @@ class DramasController < ApplicationController
   # GET /dramas.xml
   def index
     @dramas = Drama.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @dramas }
@@ -24,7 +23,7 @@ class DramasController < ApplicationController
   # GET /dramas/new
   # GET /dramas/new.xml
   def new
-    @drama = Drama.new
+    @dramapl= Drama.new
 
     respond_to do |format|
       format.html # new.html.erb

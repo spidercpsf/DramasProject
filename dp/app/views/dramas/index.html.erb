@@ -4,6 +4,7 @@
   <tr>
     <th>Name</th>
     <th>Genre</th>
+    <th>Cast</th>
     <th>Info</th>
     <th>Rating</th>
     <th>Episode</th>
@@ -15,7 +16,14 @@
 <% @dramas.each do |drama| %>
   <tr>
     <td><%= drama.name %></td>
-    <td><%= drama.genre_id %></td>
+    <% gr= Genre.find(drama.genre_id)  %>
+    <td><%= gr.name %></td>
+    <td><% listCast=drama.cast_drama %>
+    	<% listCast.each do |a| %>
+           
+           <%= a.cast.name%> 
+        <% end %>
+	</td>	
     <td><%= drama.info %></td>
     <td><%= drama.rating %></td>
     <td><%= drama.episode %></td>

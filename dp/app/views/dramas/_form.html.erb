@@ -16,8 +16,8 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :genre_id %><br />
-    <%= f.text_field :genre_id %>
+    <%= f.label:Genre %>
+    <%= f.collection_select :genre_id, Genre.all, :id, :name %>
   </div>
   <div class="field">
     <%= f.label :info %><br />

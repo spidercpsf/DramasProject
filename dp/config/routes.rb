@@ -1,5 +1,26 @@
 Dp::Application.routes.draw do
-  resources :films
+  match 'cast_drama/new/:drama_id/:cast_id' =>  'cast_drama#new'
+  get "cast_drama/show"
+
+  get "cast_drama/new"
+
+  get "cast_drama/edit"
+
+  get "cast_drama/detroy"
+
+  match 'casts' => 'cast#index'
+  match 'casts/:id' => 'cast#show'
+
+
+  get "cast/index"
+
+  get "cast/edit"
+
+  get "cast/detroy"
+
+  get "cast/new"
+
+  get "cast/show"
 
   resources :dramas
 
