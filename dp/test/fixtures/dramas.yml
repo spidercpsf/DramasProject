@@ -2,16 +2,14 @@
 
 one:
   name: MyString
+  genre_id: 1
   info: MyString
-  cast: MyString
-  genre: MyString
   rating: 1.5
   episode: MyString
 
 two:
   name: MyString
+  genre_id: 1
   info: MyString
-  cast: MyString
-  genre: MyString
   rating: 1.5
   episode: MyString

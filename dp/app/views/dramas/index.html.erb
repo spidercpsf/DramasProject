@@ -3,9 +3,8 @@
 <table>
   <tr>
     <th>Name</th>
-    <th>Info</th>
-    <th>Cast</th>
     <th>Genre</th>
+    <th>Info</th>
     <th>Rating</th>
     <th>Episode</th>
     <th></th>
@@ -16,9 +15,8 @@
 <% @dramas.each do |drama| %>
   <tr>
     <td><%= drama.name %></td>
+    <td><%= drama.genre_id %></td>
     <td><%= drama.info %></td>
-    <td><%= drama.cast %></td>
-    <td><%= drama.genre %></td>
     <td><%= drama.rating %></td>
     <td><%= drama.episode %></td>
     <td><%= link_to 'Show', drama %></td>
