@@ -4,7 +4,7 @@ one:
   name: MyString
   info: MyString
   cast: MyString
-  genre: MyString
+  genre: 1
   rating: 1.5
   episode: MyString
 
@@ -12,6 +12,6 @@ two:
   name: MyString
   info: MyString
   cast: MyString
-  genre: MyString
+  genre: 1
   rating: 1.5
   episode: MyString

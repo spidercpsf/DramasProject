@@ -1,4 +1,4 @@
-DramasProject::Application.routes.draw do
+Dp::Application.routes.draw do
   resources :dramas
 
   # The priority is based upon order of creation:

@@ -10,13 +10,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111218053916) do
+ActiveRecord::Schema.define(:version => 20111218060931) do
 
   create_table "dramas", :force => true do |t|
     t.string   "name"
     t.string   "info"
     t.string   "cast"
-    t.string   "genre"
+    t.integer  "genre"
     t.float    "rating"
     t.string   "episode"
     t.datetime "created_at"
