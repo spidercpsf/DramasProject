@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  drama_id: 1
+  cast_id: 1
+
+two:
+  drama_id: 1
+  cast_id: 1
