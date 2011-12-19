@@ -22,6 +22,7 @@
     	<% listCast.each do |a| %>
            <%= a.cast.name%> 
         <% end %>
+	<%= button_to "Add", :action => "newcast/#{drama.id}/" %>
 	</td>	
     <td><%= drama.info %></td>
     <td><%= drama.rating %></td>
