@@ -1,0 +1,55 @@
+body {
+  color: #111111;
+  background: #c4c4c4 url("images/bgd.jpg");
+  font-family: "MuseoSans500", helvetica, arial, sans-serif;
+}
+
+h1, h2, h3 {
+  color: #111111;
+  font-weight: normal;
+  font-family: "Museo700", helvetica, arial, sans-serif;
+}
+
+a:link, a:visited, a:hover, a:active {
+  color: #111111;
+}
+
+a {
+  -moz-outline: none;
+}
+
+hr {
+  background: #dddddd;
+  color: #dddddd;
+}
+
+#header {
+  height: 120px;
+  background-color: #333333;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.25), 0 1px 1px rgba(255, 255, 255, 0.3);
+  -moz-box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.25), 0 1px 1px rgba(255, 255, 255, 0.3);
+  -webkit-box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.25), 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+#header h1 {
+  padding: 20px 25px;
+  float: left;
+  font-size: 40px;
+  font-style: normal;
+  text-transform: normal;
+  letter-spacing: -1px;
+  line-height: 1.2em;
+  color: white;
+}
+
+#header h1 a:link, #header h1 a:active, #header h1 a:hover, #header h1 a:visited {
+    color: white;
+    background-color: #333333;
+    text-decoration:none;
+}
+
+#main {
+  width: 100%;
+  float: left;
+}

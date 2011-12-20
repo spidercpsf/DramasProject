@@ -1,4 +1,17 @@
 Dp::Application.routes.draw do
+  get "home/index"
+
+  devise_for :admins
+
+  devise_for :users
+  devise_scope :user do
+  get "sign_in", :to => "devise/sessions#new"
+  get "sign_up", :to => "devise/registrations#new"
+  end
+  
+  root :to => "home#index"
+  
+  
   match 'cast_drama/new/:drama_id/:cast_id' =>  'cast_drama#new'
   get "cast_drama/show"
 

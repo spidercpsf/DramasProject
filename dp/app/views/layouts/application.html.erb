@@ -7,8 +7,20 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-
-<%= yield %>
-
+<div id="container">
+    <div id="header">
+      <h1><a href="/">Drama Comments</a></h1>
+    </div>    
+    <div id="wrapper" class="wat-cf">
+      <div id="main">
+        <%= yield %>
+        <div id="footer">
+          <div class="block">
+            <p>Copyright &copy; HUSTMAN</p>
+          </div>      
+        </div>
+      </div>
+    </div>    
+  </div>
 </body>
 </html>

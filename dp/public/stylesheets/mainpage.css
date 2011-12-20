@@ -1,0 +1,49 @@
+div.mainpage{
+    width:80%;
+    height:900px;
+    background:#f4f9fe;
+    border:1px solid #E1A60A;
+    margin: 0px auto 0px auto;
+}
+
+div.toptable{
+    width:100%;
+}
+table {
+    float:left;
+    width: 33%;
+    border-spacing: 1px 0px;
+    margin: 5px 2px;
+}
+th {
+    height: 50px;
+    background:#f4f9fe;
+    border: none;
+    text-align:center;
+    font:bold 1.5em "Century Gothic","Trebuchet MS",Arial,Helvetica,sans-   serif;
+    color:#66a3d3;
+}
+tr {
+    border:none;
+}
+td {
+    background:#AFDCEC;
+    border: none;
+    text-align:center;
+    font: 1em "Century Gothic","Trebuchet MS",Arial,Helvetica,sans-   serif;
+    color:#307D7E;
+    padding:5px;
+}
+
+div.randomdrama{
+    position:relative;
+    top : 370px;
+    left : 3px;
+    
+    width: 99%;
+    height: 500px;
+    border-width: 3px;
+    border-style: double;
+    border-color: red;
+    padding: 4px 0px;
+}
