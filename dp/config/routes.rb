@@ -34,7 +34,10 @@ Dp::Application.routes.draw do
   get "cast/new"
 
   get "cast/show"
-
+  match 'dramas/addcast/:drama_id/:cast_name/:cast_id' =>  'dramas#addcast'  
+  match 'dramas/addcast/:drama_id/:cast_name' =>  'dramas#addcast'
+  match 'dramas/addcast/:drama_id' =>  'dramas#addcast'
+  match 'dramas/addcast' =>  'dramas#addcast'
   resources :dramas
 
   # The priority is based upon order of creation:

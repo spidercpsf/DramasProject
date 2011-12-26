@@ -20,10 +20,24 @@
     <td><%= gr.name %></td>
     <td><% listCast=drama.cast_drama %>
     	<% listCast.each do |a| %>
-           <%= a.cast.name%> 
+           <%= link_to a.cast.name ,'deleteLink' %> 
         <% end %>
-	<%= button_to "Add", :action => "newcast/#{drama.id}/" %>
+        </br>
+        
+        <% @cd.drama_id=drama.id %>
+        <%= form_for @cd  , :url => { :action => "addcast" } do |f| %>
+            <div class="field">
+                <%= f.label :cast_id %>
+                <%= f.collection_select :cast_id, Cast.all, :id, :name %>
+            </div>
+            <div class="actions">
+                <%= f.hidden_field :drama_id ,:value => drama.id  %>
+                <%= f.submit "Add Cast #{@cd.drama_id}" %>
+            </div>
+        <% end %>
+        </br>
 	</td>	
+    
     <td><%= drama.info %></td>
     <td><%= drama.rating %></td>
     <td><%= drama.episode %></td>
