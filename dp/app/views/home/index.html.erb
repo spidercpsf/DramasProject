@@ -1,6 +1,6 @@
 <div class = "mainpage">
 	<div class = "toptable">
-    <table id = "mostplusone">
+    <table class = "topten" id = "mostplusone">
     	<tr id = "0">
 			<th >Most +1 Drama</th>
 		</tr>
@@ -35,7 +35,7 @@
 			<td>C</td>
 		</tr>
 	</table>
-	<table id = "mostviewed">
+	<table class = "topten" id = "mostviewed">
 		<tr id = "0">
 			<th >Most Viewed Drama</th>
 		</tr>
@@ -70,7 +70,7 @@
 			<td>C</td>
 		</tr>
 	</table>
-	<table id = "mostcommented">
+	<table class = "topten" id = "mostcommented">
 		<tr id ="0">
 			<th >Most Commented Drama</th>
 		</tr>
@@ -107,7 +107,12 @@
 	</table>
 	</div>
 	<div class = "randomdrama">
-        <table>
+	  <div> 
+	    <% if admin_signed_in?  %>
+	    <%= current_admin.id %>
+	    <% end %>
+	    </div>
+        <table class = "random">
             <tr>
                 <th>Name</th>
                 <th>Genre</th>

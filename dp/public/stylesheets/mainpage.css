@@ -9,12 +9,21 @@ div.mainpage{
 div.toptable{
     width:100%;
 }
-table {
+table.topten {
     float:left;
     width: 33%;
     border-spacing: 1px 0px;
     margin: 5px 2px;
 }
+table.random {
+    position:relative;
+    top : -330px;
+    float:left;
+    width: 100%;
+    border-spacing: 1px 0px;
+    margin: auto;
+}
+
 th {
     height: 50px;
     background:#f4f9fe;
