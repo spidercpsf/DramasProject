@@ -120,6 +120,7 @@
                 <th>Info</th>
                 <th>Rating</th>
                 <th>Episode</th>
+                <th>Like</th>
                 <th></th>
                 <th></th> 
             </tr>
@@ -129,9 +130,9 @@
                 <% gr= drama.genre  %>
                 <td><%= gr.name %></td>
                 <td>
-                    <% listCast=drama.cast_drama %>
+                    <% listCast=drama.cast_list %>
                         <% listCast.each do |a| %>
-                        <%= link_to a.cast.name ,'showinfo' %>
+                        <%= link_to a ,'showinfo' %>
                     <% end %>
                     </br>
                 </td>   
@@ -139,8 +140,15 @@
                 <td><%= drama.info %></td>
                 <td><%= drama.rating %></td>
                 <td><%= drama.episode %></td>
+                <td><%= drama.like_num  %></td>
                 <td><%= link_to 'Show', drama %></td>
-                <td><%= link_to '+1', drama, :confirm => 'Are you sure?', :method => :delete %></td>
+                <td>
+                <% if drama.is_like(current_user.id) %>
+                    <%= link_to '-1', :controller => "dramas", :action => "like", :id => drama%>
+                <% else %>
+                    <%= link_to '+1', :controller => "dramas", :action => "like", :id => drama%>
+                <% end %>
+                </td>
               </tr>
             <% end %>
         </table>
