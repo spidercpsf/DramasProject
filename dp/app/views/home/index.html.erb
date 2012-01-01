@@ -121,6 +121,7 @@
                 <th>Rating</th>
                 <th>Episode</th>
                 <th>Like</th>
+                <th>Comment</th>
                 <th></th>
                 <th></th> 
             </tr>
@@ -141,6 +142,7 @@
                 <td><%= drama.rating %></td>
                 <td><%= drama.episode %></td>
                 <td><%= drama.like_num  %></td>
+                <td><%= drama.comment.length  %></td>
                 <td><%= link_to 'Show', drama %></td>
                 <td>
                 <% if drama.is_like(current_user.id) %>

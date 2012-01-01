@@ -1,4 +1,7 @@
 Dp::Application.routes.draw do
+ match 'comments/new' => 'comments#new' 
+ resources :comments
+
   get "home/index"
 
   devise_for :admins

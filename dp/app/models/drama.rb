@@ -4,6 +4,7 @@ class Drama < ActiveRecord::Base
     has_many :cast_drama
     has_many :like
     has_many :user
+    has_many :comment
     def cast_num
         listCast=self.cast_drama
         return listCast.length
@@ -35,12 +36,5 @@ class Drama < ActiveRecord::Base
         else
             return false
         end
-    end
-    def listMostLike
-        numLikeArr = []
-        for Drama.all.each do |a|
-            numLikeArr = numLikeArr + [a.like.length]
-        end
-        
     end
 end

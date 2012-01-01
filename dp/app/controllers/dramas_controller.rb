@@ -38,6 +38,7 @@ class DramasController < ApplicationController
   def show
     @drama = Drama.find(params[:id])
     @cd= CastDrama.new
+    @cmt = Comment.new
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @drama }
