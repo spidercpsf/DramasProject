@@ -49,17 +49,36 @@ hr {
     text-decoration:none;
 }
 
+#header div a:link, #header div a:active, #header div a:hover, #header div a:visited {
+    color: white;
+    background-color: #333333;
+    text-decoration:none;
+}
+
+
 #main {
   width: 100%;
   float: left;
 }
 
+div.login {
+    float: right;
+    color: white;
+    position: relative;
+    right: 10px;
+    top: 10px;
+    font-size: 15px;
+}
+
 ul.hmenu {
-  list-style: none;	
-  margin: 0 0 2em;
-  padding: 0;
+    float: right;
+    position: relative;
+    right : 10px;
+    top: 10px;
+    list-style: none;	
 }
 
 ul.hmenu li {
-  display: inline;  
+    font-size: 15px;
+    display: inline;  
 }
