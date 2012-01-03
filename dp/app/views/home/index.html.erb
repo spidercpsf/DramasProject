@@ -4,106 +4,46 @@
     	<tr id = "0">
 			<th >Most +1 Drama</th>
 		</tr>
-		<tr id = "1">
-			<td>A</td>
+        <% for i in 0..9 %>
+		<tr id = <%= "#{i}"  %> >
+            <% if i<@dramas_sort_like.length %>
+            <% drama= @dramas_sort_like[i] %>
+                <td><%= link_to drama.name, drama %></td>
+            <% else %>
+                <td>**</td>
+            <% end %>
 		</tr>
-		<tr id = "2">
-			<td>B</td>
-		</tr>
-		<tr id = "3">	
-			<td>C</td>
-		</tr>
-		<tr id = "4">	
-			<td>C</td>
-		</tr>
-		<tr id = "5">	
-			<td>C</td>
-		</tr>
-		<tr id = "6">	
-			<td>C</td>
-		</tr>
-		<tr id = "7">	
-			<td>C</td>
-		</tr>
-		<tr id = "8">	
-			<td>C</td>
-		</tr>
-		<tr id = "9">	
-			<td>C</td>
-		</tr>
-		<tr id = "10">	
-			<td>C</td>
-		</tr>
+        <% end %>
 	</table>
 	<table class = "topten" id = "mostviewed">
 		<tr id = "0">
 			<th >Most Viewed Drama</th>
 		</tr>
-		<tr id = "1">
-			<td>A</td>
+		<% for i in 0..9 %>
+		<tr id = <%= "#{i}"  %> >
+            <% if i<@dramas_sort_view.length %>
+            <% drama= @dramas_sort_view[i] %>
+                <td><%= link_to drama.name, drama %></td>
+            <% else %>
+                <td>**</td>
+            <% end %>
 		</tr>
-		<tr id = "2">
-			<td>B</td>
-		</tr>
-		<tr id = "3">	
-			<td>C</td>
-		</tr>
-		<tr id = "4">	
-			<td>C</td>
-		</tr>
-		<tr id = "5">	
-			<td>C</td>
-		</tr>
-		<tr id = "6">	
-			<td>C</td>
-		</tr>
-		<tr id = "7">	
-			<td>C</td>
-		</tr>
-		<tr id = "8">	
-			<td>C</td>
-		</tr>
-		<tr id = "9">	
-			<td>C</td>
-		</tr>
-		<tr id = "10">	
-			<td>C</td>
-		</tr>
+        <% end %>
 	</table>
 	<table class = "topten" id = "mostcommented">
 		<tr id ="0">
 			<th >Most Commented Drama</th>
 		</tr>
-		<tr id = "1">
-			<td>A</td>
+		<% for i in 0..9 %>
+		<tr id = <%= "#{i}"  %> >
+            <% if i<@dramas_sort_comment.length %>
+            <% drama= @dramas_sort_comment[i] %>
+                <td><%= link_to drama.name, drama %></td>
+            <% else %>
+                <td>**</td>
+            <% end %>
 		</tr>
-		<tr id = "2">
-			<td>B</td>
-		</tr>
-		<tr id = "3">	
-			<td>C</td>
-		</tr>
-		<tr id = "4">	
-			<td>C</td>
-		</tr>
-		<tr id = "5">	
-			<td>C</td>
-		</tr>
-		<tr id = "6">	
-			<td>C</td>
-		</tr>
-		<tr id = "7">	
-			<td>C</td>
-		</tr>
-		<tr id = "8">	
-			<td>C</td>
-		</tr>
-		<tr id = "9">	
-			<td>C</td>
-		</tr>
-		<tr id = "10">	
-			<td>C</td>
-		</tr>
+        <% end %>
 	</table>
 	</div>
 	<div class = "randomdrama">
@@ -122,12 +62,12 @@
                 <th>Episode</th>
                 <th>Like</th>
                 <th>Comment</th>
-                <th></th>
+                <th>View</th>
                 <th></th> 
             </tr>
             <% @dramas.each do |drama| %>
               <tr>
-                <td><%= drama.name %></td>
+                <td><%= link_to drama.name, drama %></td>
                 <% gr= drama.genre  %>
                 <td><%= gr.name %></td>
                 <td>
@@ -143,7 +83,7 @@
                 <td><%= drama.episode %></td>
                 <td><%= drama.like_num  %></td>
                 <td><%= drama.comment.length  %></td>
-                <td><%= link_to 'Show', drama %></td>
+                <td><%= drama.view %></td>
                 <td>
                 <% if drama.is_like(current_user.id) %>
                     <%= link_to '-1', :controller => "dramas", :action => "like", :id => drama%>
