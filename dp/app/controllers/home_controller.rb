@@ -5,6 +5,9 @@ class HomeController < ApplicationController
         return
     end
       @dramas=Drama.all
+      @dramas_sort_like = Drama.find(:all).sort_by{|p| p.like_num}
+      @dramas_sort_view = Drama.find(:all).sort_by{|p| p.view}
+      @dramas_sort_comment = Drama.find(:all).sort_by{|p| p.comment.length}
   end
 
 end

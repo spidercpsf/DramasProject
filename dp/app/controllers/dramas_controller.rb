@@ -37,6 +37,11 @@ class DramasController < ApplicationController
   # GET /dramas/1.xml
   def show
     @drama = Drama.find(params[:id])
+    if @drama.view == nil
+        @drama.view =0
+    end
+    @drama.view =@drama.view + 1
+    @drama.save
     @cd= CastDrama.new
     @cmt = Comment.new
     respond_to do |format|
@@ -54,7 +59,7 @@ class DramasController < ApplicationController
         redirect_to (:controller => :home, :action => :index)
         return
     end
-
+      
     @drama= Drama.new
     respond_to do |format|
       format.html # new.html.erb
