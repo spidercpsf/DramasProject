@@ -12,6 +12,7 @@ h1, h2, h3 {
 
 a:link, a:visited, a:hover, a:active {
   color: #111111;
+  background-color: white;
 }
 
 a {
@@ -78,7 +79,30 @@ ul.hmenu {
     list-style: none;	
 }
 
+ul.hmenu p{
+    font-size: 1.2em;
+    color:white;
+    }
+
 ul.hmenu li {
-    font-size: 15px;
+    font-size: 1.2em;
     display: inline;  
 }
+
+div.sign {
+    margin:auto;
+    width:25%;
+    font-size: 1.5em;
+    line-height: 1.5em;
+}
+
+div.sign a:link, a:visited, a:hover, a:active {
+  color: #111111;
+  background-color: transparent;
+}
+
+div .sign h2{
+    font-size: 2em;
+    border-bottom: 3px solid;
+    line-height: 1.3em;
+}    
