@@ -62,6 +62,19 @@ hr {
   float: left;
 }
 
+#footer{
+    float:left;
+    position:relative;
+    border-top:solid #333333 1px;
+    line-height:2em;
+    bottom:-100px;
+    font-size:1.2em;
+    color:red;
+    height:100%;
+    width:100%;
+    margin:auto;
+}
+
 div.login {
     float: right;
     color: white;
