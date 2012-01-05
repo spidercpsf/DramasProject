@@ -113,7 +113,7 @@ class DramasController < ApplicationController
     end
 
     @drama = Drama.find(params[:id])
-
+        
     respond_to do |format|
       if @drama.update_attributes(params[:drama])
         format.html { redirect_to(@drama, :notice => 'Drama was successfully updated.') }
@@ -152,6 +152,9 @@ class DramasController < ApplicationController
       @id_u = current_user.id
 
       @like = Like.new(:user_id => @id_u , :drama_id => @id)
+      
+      @drama = Drama.find(@id)
+      
       @msg = "Insert unsuccessful"
       tmp = Like.find(:all, :conditions => "drama_id = #{@id} and user_id = #{@id_u}")
       if tmp.length > 0
@@ -164,6 +167,10 @@ class DramasController < ApplicationController
                 @msg=  "Cannot insert"
             end
       end
-      redirect_to (:controller => :home, :action => :index)
+      #redirect_to (:controller => :home, :action => :index)
+      respond_to do |format|
+        format.html { redirect_to (:controller => :home, :action => :index)}
+        format.js
+      end 
   end
 end

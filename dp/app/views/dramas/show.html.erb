@@ -47,7 +47,7 @@
 	
 	<p class = "title">Write your comment</p>  
 	<div class = "postcomment">
-    <%= form_for @cmt  , :url => {:controller => "comments" , :action => "new" , :method => :post} do |f| %>
+    <%= form_for @cmt,:remote => true, :url => {:controller => "comments" , :action => "new" , :method => :post} do |f| %>
             <div class="field">
                 <%= f.text_area :comment, :class => "textarea_comment" %>
             </div>

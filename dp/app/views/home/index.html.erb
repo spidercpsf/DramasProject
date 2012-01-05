@@ -84,11 +84,18 @@
                 <td><%= drama.like_num  %></td>
                 <td><%= drama.comment.length  %></td>
                 <td><%= drama.view %></td>
-                <td>
+                <!-- <td>
                 <% if drama.is_like(current_user.id) %>
                     <%= link_to '-1', :controller => "dramas", :action => "like", :id => drama%>
                 <% else %>
                     <%= link_to '+1', :controller => "dramas", :action => "like", :id => drama%>
+                <% end %>
+                </td> -->
+                <td>
+                <% if drama.is_like(current_user.id) %>
+                    <%= link_to '-1', :controller => "dramas", :action => "like", :id => drama, :remote => true %>
+                <% else %>
+                    <%= link_to '+1', :controller => "dramas", :action => "like", :id => drama, :remote => true %>
                 <% end %>
                 </td>
               </tr>

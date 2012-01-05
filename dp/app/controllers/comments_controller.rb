@@ -27,7 +27,9 @@ class CommentsController < ApplicationController
       @cmt = Comment.new(params[:comment])
       @cmt.save
       @drama = Drama.find(@cmt.drama_id)
-      redirect_to(@drama) 
+      respond_to do |format|
+        format.html {redirect_to(@drama)}
+      end 
   end
 
   # GET /comments/1/edit
