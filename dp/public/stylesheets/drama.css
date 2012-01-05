@@ -22,7 +22,6 @@ p.dramatitle {
 div.poster {
     float:left;
     position:relative;
-    border:1px solid #E1A60A;
     top: 10px;
     left: 20px;
     width: 150px;
@@ -32,7 +31,7 @@ div.poster {
 div.showdrama{
     width:80%;
     height:100%;
-    float:left;
+    margin:auto;
 }
 
 div.dramainfo{

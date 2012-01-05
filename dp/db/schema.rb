@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120103083134) do
+ActiveRecord::Schema.define(:version => 20120105093306) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -65,6 +65,8 @@ ActiveRecord::Schema.define(:version => 20120103083134) do
     t.datetime "updated_at"
     t.integer  "like"
     t.integer  "view"
+    t.binary   "picture_data"
+    t.string   "content_type"
   end
 
   create_table "genres", :force => true do |t|

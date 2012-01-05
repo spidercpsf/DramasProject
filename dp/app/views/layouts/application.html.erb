@@ -20,18 +20,16 @@
   				<li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
 			</ul>
 		</div>	
-		<% else %>	
-<!-- 			<div class = "login">
-				<%= form_for("user", :url => user_session_path) do |f| %>
-		  		<%= f.text_field :email %>
-		  		<%= f.password_field :password %>
-		  		<%= f.check_box :remember_me %>
-		  		<%= f.label :remember_me %>
-		  		<%= f.submit 'Sign in' %>
-		  		<p>	<li><%= link_to('Register', new_user_registration_path)  %></li>
-		  			<li><%= link_to "Forgot your password?", new_password_path('user') %></li></p>
-				<% end %>
-			</div> -->		<% end %>
+		<% elsif admin_signed_in? then%>	
+			<div>
+      		<ul class="hmenu">
+      			<p>Hi, <%= current_admin.email %></p>
+      			<li><%= link_to('Edit registration', edit_admin_registration_path) %></li>
+      			<li style = "color:white">|</li>
+  				<li><%= link_to('Logout', destroy_admin_session_path, :method => :delete) %></li>
+			</ul>
+			</div>	
+		<% end %>
 
     </div>    
     <div id="wrapper" class="wat-cf">

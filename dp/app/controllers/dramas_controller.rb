@@ -173,4 +173,8 @@ class DramasController < ApplicationController
         format.js
       end 
   end
+  def picture
+    @drama = Drama.find(params[:id])
+    send_data(@drama.picture_data, :type => @drama.content_type)
+  end
 end

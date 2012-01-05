@@ -4,6 +4,11 @@
     </p>
     
   <div class = "poster">
+  		<% if @drama.picture_data == nil %>
+  		<%= image_tag 'no_poster.jpg', :height => '100%'%>
+  		<% else %>
+  		<%= image_tag picture_drama_path(@drama), :height => '100%' %>
+  		<% end %>
     </div>
     
   <div class = "dramainfo"> 
@@ -37,7 +42,7 @@
      </p>
  	 </div>  
   
-  <p class = "title">Number of Comments<p>
+  <p class = "title"><%= @drama.comment.length %> Comments<p>
   	
   <div class = "comments">
       <% @drama.comment.each do |cmt|  %>
@@ -53,7 +58,11 @@
             </div>
             <div class="actions">
                 <%= f.hidden_field :drama_id ,:value => @drama.id  %>
-                <%= f.hidden_field :user_id ,:value => current_user.id  %>
+                <% if user_signed_in? %>
+                	<%= f.hidden_field :user_id ,:value => current_user.id  %>
+                <% elsif admin_signed_in? %>
+                	<%= f.hidden_field :admin_id ,:value => current_admin.id  %>
+                <% end %>
                 <%= f.submit "Post Comment", :class => "post_button" %>
             </div>
         <% end %>

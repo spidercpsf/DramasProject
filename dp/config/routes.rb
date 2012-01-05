@@ -5,11 +5,15 @@ Dp::Application.routes.draw do
   get "home/index"
 
   devise_for :admins
-
+  devise_scope :admin do
+    get "admins/sign_out", :to => "devise/sessions#destroy"
+  end
+  
   devise_for :users
   devise_scope :user do
-  get "sign_in", :to => "devise/sessions#new"
-  get "sign_up", :to => "devise/registrations#new"
+    get "sign_in", :to => "devise/sessions#new"
+    get "sign_up", :to => "devise/registrations#new"
+    get "users/sign_out", :to => "devise/sessions#destroy"
   end
   
   root :to => "home#index"
@@ -43,7 +47,12 @@ Dp::Application.routes.draw do
   match 'dramas/addcast' =>  'dramas#addcast'
   match 'dramas/like/' => 'dramas#like'
   get "dramas/like"
-  resources :dramas
+  resources :dramas do
+    member do
+      get :picture
+    end
+  end
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
