@@ -9,7 +9,16 @@
   <b>Info:</b>
   <%= @cast.info %>
 </p>
-
+</p>
+    <b>List Drama:</b></br>
+    <% listDrama= @cast.cast_drama %>
+    <% listDrama.each do |a| %>
+        <% if a.drama!= nil %>
+            <%= link_to a.drama.name, a.drama %>
+            </br>
+        <% end %>
+    <% end %>
+</p>
 
 <%= link_to 'Edit', edit_cast_path(@cast) %> |
 <%= link_to 'Back', casts_path %>

@@ -24,7 +24,7 @@ div.poster {
     position:relative;
     top: 10px;
     left: 20px;
-    width: 150px;
+    max-width:40%;
     height: 200px;
 }
 
@@ -36,35 +36,31 @@ div.showdrama{
 
 div.dramainfo{
     float:left;
-    border:1px solid #E1A60A;
-    background:#AFDCEC;
     position: relative;
     left: 50px;
     top: 10px;
-    width: 80%;
+    width: 50%;
     height: 200px;
 }
 
 div.dramasynopsis{
     float:left;
-    border:1px solid #E1A60A;
-    background:#AFDCEC;
     position: relative;
     left: 20px;
     top: 20px;
     width: 97%;
     height: 100%;
+    padding:0px 50px;
 }
 
 div.dramacast{
     float:left;
-    border:1px solid #E1A60A;
-    background:#AFDCEC;
     position: relative;
     left: 20px;
     top: 30px;
     width: 97%;
     height: 100%;
+    padding:0px 50px;
 }
 
 p.title{
@@ -77,6 +73,16 @@ p.title{
     font-size:1.8em;
     border-bottom: solid #E1A60A 1.5px;
     line-height: 1.5em;
+}
+
+#user_email{
+	color: #6E6A6B;
+	font-weight:bold;
+	padding:0px 30px;
+}
+
+#user_comment{
+	padding: 0px 50px;
 }
 
 div.numberofcomments{
@@ -93,8 +99,6 @@ div.comments{
     position: relative;
     left: 20px;
     top: 20px;
-    border:1px solid #E1A60A;
-    background:#AFDCEC;
     width: 97%;
     height: 100%;
 }

@@ -25,6 +25,16 @@
       <strong>Episode:</strong>
       <%= @drama.episode %>
     </p>
+    <p>
+      <strong>View:</strong>
+      <%= @drama.view %>
+    </p>
+    <p>
+      <strong>Like:</strong>
+      <%= @drama.like_num %>
+    </p>
+
+
   </div>
   
   <p class = "title">Synopsis<p>
@@ -32,7 +42,6 @@
     <p><%= @drama.info %>
     </p>
   </div>
-
   <p class = "title">Cast</p>  
 	<div class = "dramacast">
      <p>  
@@ -44,12 +53,27 @@
  	 </div>  
   
   <p class = "title"><%= @drama.comment.length %> Comments<p>
-  	
-  <div class = "comments">
-      <% @drama.comment.each do |cmt|  %>
-          <p><%= cmt.comment %></p><br>
-      <% end %>
-  </div>
+  <% comments = @drama.comment %>
+  <% cmtlength = comments.length %>
+  <% if cmtlength > 0 then %>	
+  	<div class = "comments">
+  		<% for i in 0..cmtlength-1 do %>
+  		  <% cmt = comments[cmtlength-1-i]%>
+        	  <p id = "user_email">
+        	  	#<%= i+1 %>. 
+        	  	<%= User.find(cmt.user_id).email %> posted
+        	  	<% if (Time.now-cmt.created_at).to_i <= 82800 then %>
+        	  	<%= time_ago_in_words(cmt.created_at) %> ago
+        	  	<% else %>
+        	  	at <%= cmt.created_at%>
+        	  	<% end %>
+        	  	</p>
+        	  	<p id = "user_comment">
+        	  		<%= cmt.comment %>
+        	  	</p>
+      	<% end %>
+  	</div>
+  <% end %>	
 	
 	<p class = "title">Write your comment</p>  
 	<div class = "postcomment">
