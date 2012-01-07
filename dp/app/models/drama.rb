@@ -13,7 +13,7 @@ class Drama < ActiveRecord::Base
         listCast=self.cast_drama
         casts = []
         listCast.each do |a|
-            casts= casts+  [a.cast.name]
+            casts= casts+  [a.cast]
         end
         return casts
     end

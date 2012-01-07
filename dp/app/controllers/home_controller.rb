@@ -1,8 +1,10 @@
 class HomeController < ApplicationController
   def index
     if !user_signed_in?
-        redirect_to (new_user_session_path)
-        return
+        if !admin_signed_in?        
+            redirect_to (new_user_session_path)
+            return
+        end
     end
       @dramas=Drama.all
       @dramas_sort_like = Drama.find(:all).sort_by{|p| p.like_num}

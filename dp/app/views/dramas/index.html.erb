@@ -20,7 +20,8 @@
     <td><%= gr.name %></td>
     <td><% listCast=drama.cast_drama %>
     	<% listCast.each do |a| %>
-           <%= link_to a.cast.name ,'deleteLink' %> 
+            <%= link_to a.cast.name ,a.cast %>
+            <%= link_to '⊕', a.cast, :confirm => 'Are you sure?', :method => :delete %>
         <% end %>
         </br>
         
@@ -28,7 +29,7 @@
         <%= form_for @cd  , :url => { :action => "addcast" } do |f| %>
             <div class="field">
                 <%= f.label :cast_id %>
-                <%= f.collection_select :cast_id, Cast.all, :id, :name %>
+                <%= f.collection_select :cast_id, Cast.all - drama.cast_list, :id, :name %>
             </div>
             <div class="actions">
                 <%= f.hidden_field :drama_id ,:value => drama.id  %>

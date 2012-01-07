@@ -35,10 +35,11 @@
 
   <p class = "title">Cast</p>  
 	<div class = "dramacast">
-     <p><% listCast=@drama.cast_drama %>
-    	<% listCast.each do |a| %>
-           <%= a.cast.name%> 
-        <% end %>
+     <p>  
+        <% listCast=@drama.cast_drama %>
+        <% listCast.each do |a| %>
+                <%= link_to a.cast.name , a.cast  %>
+         <% end %>
      </p>
  	 </div>  
   
