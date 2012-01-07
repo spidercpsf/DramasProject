@@ -1,0 +1,19 @@
+  		<% if @drama.comment.length > 0 then %>	
+  			<% comments = @drama.comment %>
+ 	 		<% cmtlength = comments.length %>
+  				<% for i in 0..cmtlength-1 do %>
+  		  		<% cmt = comments[cmtlength-1-i]%>
+        		  <p class = "user_email">
+        	  		#<%= cmtlength-i %>. 
+        	  		<%= User.find(cmt.user_id).email %> posted
+        	  		<% if (Time.now-cmt.created_at).to_i <= 82800 then %>
+        	  		<%= time_ago_in_words(cmt.created_at) %> ago
+        	  		<% else %>
+        	  		at <%= cmt.created_at%>
+        	  	<% end %>
+        	  	</p>
+        	  	<p class = "user_comment">
+        	  		<%= cmt.comment %>
+        	  	</p>
+      		<% end %>
+ 	<% end %>	

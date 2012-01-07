@@ -27,8 +27,10 @@ class CommentsController < ApplicationController
       @cmt = Comment.new(params[:comment])
       @cmt.save
       @drama = Drama.find(@cmt.drama_id)
+      flash[:notice] = "Thanks for commenting!"
       respond_to do |format|
         format.html {redirect_to(@drama)}
+        format.js
       end 
   end
 
