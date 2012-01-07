@@ -48,9 +48,6 @@
 	</div>
 	<div class = "randomdrama">
 	  <div> 
-	    <% if admin_signed_in?  %>
-	    <%= current_admin.id %>
-	    <% end %>
 	    </div>
         <table class = "random">
             <tr>
@@ -84,11 +81,18 @@
                 <td><%= drama.like_num  %></td>
                 <td><%= drama.comment.length  %></td>
                 <td><%= drama.view %></td>
-                <td>
+                <!-- <td>
                 <% if drama.is_like(current_user.id) %>
                     <%= link_to '-1',:update => "random", :controller => "dramas", :action => "like", :id => drama, :remote => true%>
                 <% else %>
                     <%= link_to '+1',:update => "random", :controller => "dramas", :action => "like", :id => drama, :remote => true%>
+                <% end %>
+                </td> -->
+                <td>
+                <% if drama.is_like(current_user.id) %>
+                    <%= link_to '-1', :controller => "dramas", :action => "like", :id => drama, :remote => true %>
+                <% else %>
+                    <%= link_to '+1', :controller => "dramas", :action => "like", :id => drama, :remote => true %>
                 <% end %>
                 </td>
               </tr>

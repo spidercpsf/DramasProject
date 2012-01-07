@@ -1,4 +1,4 @@
-<%= form_for(@drama) do |f| %>
+<%= form_for(@drama, :html => {:multipart => true}) do |f| %>
   <% if @drama.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@drama.errors.count, "error") %> prohibited this drama from being saved:</h2>
@@ -15,12 +15,16 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
+    <%= f.label :picture_file %><br />
+    <%= f.file_field :picture_file %>
+  </div>
+  <div class="field">
     <%= f.label:Genre %>
     <%= f.collection_select :genre_id, Genre.all, :id, :name %>
   </div>
   <div class="field">
     <%= f.label :info %><br />
-    <%= f.text_field :info %>
+    <%= f.text_area :info %>
   </div>
   <div class="field">
     <%= f.label :rating %><br />

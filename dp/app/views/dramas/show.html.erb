@@ -2,8 +2,15 @@
   <p class = "dramatitle">
       <%= @drama.name %>
     </p>
+    
   <div class = "poster">
+  		<% if @drama.picture_data == nil %>
+  		<%= image_tag 'no_poster.jpg', :height => '100%'%>
+  		<% else %>
+  		<%= image_tag picture_drama_path(@drama), :height => '100%' %>
+  		<% end %>
     </div>
+    
   <div class = "dramainfo"> 
     <p>
       <strong>Rating:</strong>
@@ -19,44 +26,46 @@
       <%= @drama.episode %>
     </p>
   </div>
+  
+  <p class = "title">Synopsis<p>
   <div class = "dramasynopsis">
-    <center><p><strong>Synopsis</strong><p></center>
     <p><%= @drama.info %>
     </p>
   </div>
-  <div class = "dramacast">
-     <center><p><strong>Cast</strong></p></center>
+
+  <p class = "title">Cast</p>  
+	<div class = "dramacast">
      <p><% listCast=@drama.cast_drama %>
     	<% listCast.each do |a| %>
            <%= a.cast.name%> 
         <% end %>
      </p>
-  </div>
-  <div class = "numberofcomments">
-    <hr class = "left"></hr>
-    <div class = "number"><p>Number of Comments<p></div>
-    <hr class = "right"></hr>
-  </div>
+ 	 </div>  
+  
+  <p class = "title"><%= @drama.comment.length %> Comments<p>
+  	
   <div class = "comments">
       <% @drama.comment.each do |cmt|  %>
           <p><%= cmt.comment %></p><br>
       <% end %>
   </div>
-</div>  
-<div class = "postcomment">
-    <%= form_for @cmt  , :url => {:controller => "comments" , :action => "new" , :method => :post} do |f| %>
+	
+	<p class = "title">Write your comment</p>  
+	<div class = "postcomment">
+    <%= form_for @cmt,:remote => true, :url => {:controller => "comments" , :action => "new" , :method => :post} do |f| %>
             <div class="field">
-                <%= f.label :comment %>
-                <%= f.text_field :comment %>
+                <%= f.text_area :comment, :class => "textarea_comment" %>
             </div>
             <div class="actions">
                 <%= f.hidden_field :drama_id ,:value => @drama.id  %>
-
-                <%= f.hidden_field :user_id ,:value => current_user.id  %>
-
-                <%= f.submit "Add Comment" %>
+                <% if user_signed_in? %>
+                	<%= f.hidden_field :user_id ,:value => current_user.id  %>
+                <% elsif admin_signed_in? %>
+                	<%= f.hidden_field :admin_id ,:value => current_admin.id  %>
+                <% end %>
+                <%= f.submit "Post Comment", :class => "post_button" %>
             </div>
         <% end %>
+	</div>
+	
 </div>
-<%= link_to 'Edit', edit_drama_path(@drama) %> |
-<%= link_to 'Back', dramas_path %>
