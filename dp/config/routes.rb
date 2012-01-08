@@ -28,7 +28,7 @@ Dp::Application.routes.draw do
 
   get "cast_drama/edit"
 
-  get "cast_drama/detroy"
+  get "cast_drama/destroy"
 
   match 'casts' => 'cast#index'
   match 'casts/:id' => 'cast#show'
@@ -38,7 +38,7 @@ Dp::Application.routes.draw do
 
   get "cast/edit"
 
-  get "cast/detroy"
+  get "cast/destroy"
 
   get "cast/new"
 

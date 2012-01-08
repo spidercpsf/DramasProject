@@ -19,10 +19,12 @@
     <% gr= drama.genre  %>
     <td><%= gr.name %></td>
     <td><% listCast=drama.cast_drama %>
-    	<% listCast.each do |a| %>
-            <%= link_to a.cast.name ,a.cast %>
-            <%= link_to '⊕', a.cast, :confirm => 'Are you sure?', :method => :delete %>
-        <% end %>
+        <% if listCast!=nil %>
+            <% listCast.each do |a| %>
+                <%= link_to a.cast.name ,a.cast %>
+                <%= link_to '⊕', a.cast, :confirm => 'Are you sure?', :method => :delete %>
+            <% end %>
+        <% end  %>
         </br>
         
         <% @cd.drama_id=drama.id %>
