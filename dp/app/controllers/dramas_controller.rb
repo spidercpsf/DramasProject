@@ -150,11 +150,8 @@ class DramasController < ApplicationController
       end
       @id= params[:id]
       @id_u = current_user.id
-
       @like = Like.new(:user_id => @id_u , :drama_id => @id)
-      
       @drama = Drama.find(@id)
-      
       @msg = "Insert unsuccessful"
       tmp = Like.find(:all, :conditions => "drama_id = #{@id} and user_id = #{@id_u}")
       if tmp.length > 0
@@ -169,7 +166,7 @@ class DramasController < ApplicationController
       end
       #redirect_to (:controller => :home, :action => :index)
       respond_to do |format|
-        format.html { redirect_to (:controller => :home, :action => :index)}
+        format.html {redirect_to (@drama)}
         format.js
       end 
   end

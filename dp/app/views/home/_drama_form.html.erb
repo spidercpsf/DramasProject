@@ -1,0 +1,39 @@
+<div class = "shortinfo">	
+	<div class = "poster">
+  		<% if @drama.picture_data == nil %>
+  		<%= image_tag 'no_poster.jpg', :height => '100%'%>
+  		<% else %>
+  		<%= image_tag picture_drama_path(@drama), :height => '100%' %>
+  		<% end %>
+    </div>
+    
+    
+  	<div class = "dramainfo">
+  		<p><strong><%= link_to @drama.name, @drama %></strong></p> 
+    <p>
+      <strong>Rating:</strong>
+      <%= @drama.rating %>
+    </p>
+    <p>
+      <strong>Genre:</strong>
+      <% gr= @drama.genre  %>
+      <%= gr.name %>
+    </p>
+    <p>
+      <strong>Episode:</strong>
+      <%= @drama.episode %>
+    </p>
+    <p>
+      <strong>View:</strong>
+      <%= @drama.view %>
+    </p>
+    <p>
+      <strong>Like:</strong>
+      <span id = "like_number"> <%= @drama.like_num %></span>
+    </p>
+    <p>
+      <strong>Comment:</strong>
+      <%= @drama.comment.length %>
+    </p>
+  </div>
+</div>

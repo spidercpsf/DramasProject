@@ -31,10 +31,9 @@
     </p>
     <p>
       <strong>Like:</strong>
-      <%= @drama.like_num %>
+      <span id = "like_number"> <%= @drama.like_num %></span>
     </p>
-
-
+    <p id = "plusone_button"> <%= render 'like_form' %></p>
   </div>
   
   <p class = "title">Synopsis<p>

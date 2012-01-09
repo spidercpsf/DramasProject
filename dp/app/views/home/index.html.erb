@@ -50,7 +50,7 @@
 	  <div> 
 	    </div>
         <table class = "random">
-            <tr>
+            <!-- <tr>
                 <th>Name</th>
                 <th>Genre</th>
                 <th>Cast</th>
@@ -60,46 +60,12 @@
                 <th>Like</th>
                 <th>Comment</th>
                 <th>View</th>
-                <th></th> 
-            </tr>
-            <% @dramas.each do |drama| %>
-              <tr>
-                <td><%= link_to drama.name, drama %></td>
-                <% gr= drama.genre  %>
-                <td><%= gr.name %></td>
-                <td>
-                    <% listCast=drama.cast_drama %>
-                        <% listCast.each do |a| %>
-                        <%= link_to a.cast.name , a.cast  %>
-                    <% end %>
-                    </br>
-                </td>   
-    
-                <td><%= drama.info %></td>
-                <td><%= drama.rating %></td>
-                <td><%= drama.episode %></td>
-                <td><%= drama.like_num  %></td>
-                <td><%= drama.comment.length  %></td>
-                <td><%= drama.view %></td>
-                <!-- <td>
-                <% if user_signed_in? %>
-                    <% if drama.is_like(current_user.id) %>
-                        <%= link_to '-1',:update => "random", :controller => "dramas", :action => "like", :id => drama, :remote => true%>
-                    <% else %>
-                        <%= link_to '+1',:update => "random", :controller => "dramas", :action => "like", :id => drama, :remote => true%>
-                    <% end %>
-                <% end  %>
-                </td> -->
-                <td>
-                <% if user_signed_in? %>
-                    <% if drama.is_like(current_user.id) %>
-                        <%= link_to '-1', :controller => "dramas", :action => "like", :id => drama, :remote => true %>
-                    <% else %>
-                        <%= link_to '+1', :controller => "dramas", :action => "like", :id => drama, :remote => true %>
-                    <% end %>
-                <% end %>
-                </td>
-              </tr>
+            </tr> -->
+            <% @dramas.each do |d| %>
+            	<% @drama = d %>
+              <div id = "drama_<%= d.id %>">
+                <%= render 'drama_form' %>
+              </div>
             <% end %>
         </table>
 	</div>
