@@ -8,7 +8,7 @@
 		<tr id = <%= "#{i}"  %> >
             <% if i<@dramas_sort_like.length %>
             <% drama= @dramas_sort_like[i] %>
-                <td><%= link_to drama.name, drama %></td>
+                <td><%= link_to drama.name, drama %>   (<%= drama.like_num%>)</div></td>
             <% else %>
                 <td>**</td>
             <% end %>
@@ -23,7 +23,7 @@
 		<tr id = <%= "#{i}"  %> >
             <% if i<@dramas_sort_view.length %>
             <% drama= @dramas_sort_view[i] %>
-                <td><%= link_to drama.name, drama %></td>
+                <td><%= link_to drama.name, drama %>   (<%= drama.view%>)</td>
             <% else %>
                 <td>**</td>
             <% end %>
@@ -38,7 +38,7 @@
 		<tr id = <%= "#{i}"  %> >
             <% if i<@dramas_sort_comment.length %>
             <% drama= @dramas_sort_comment[i] %>
-                <td><%= link_to drama.name, drama %></td>
+                <td><%= link_to drama.name, drama %> (<%= drama.comment.length %>)</td>
             <% else %>
                 <td>**</td>
             <% end %>

@@ -2,7 +2,18 @@ class CastsController < ApplicationController
   # GET /casts
   # GET /casts.xml
   def index
-    @casts = Cast.all
+    @casts = Cast.all.sort_by{|a| a.name.downcase}
+    @c = {}
+    for i in 0..@casts.length-1
+      x = @casts[i].name[0,1].downcase
+      if x >= "a" and x <= "z" then 
+        if @c[x] == nil then @c[x] = Array.new end
+        @c[x] = @c[x] << i
+      else 
+        if @c["other"]== nil then @c["other"] = Array.new end
+        @c["other"] = @c["other"] << i
+      end      
+    end
 
     respond_to do |format|
       format.html # index.html.erb

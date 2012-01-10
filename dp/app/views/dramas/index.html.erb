@@ -1,55 +1,83 @@
-<% if @check %>
-<h1>Listing dramas</h1>
-<table>
+<h1 class = "title" style = "text-align:center; color: #111111; font-size:3em;margin-bottom:30px">Listing Dramas</h1>
+<div = "dramalisting">
+<table style = "width:100%;height:100%">
   <tr>
+  	<th></th>
     <th>Name</th>
     <th>Genre</th>
     <th>Cast</th>
     <th>Info</th>
     <th>Rating</th>
     <th>Episode</th>
+    <th>Like</th>
+    <th>View</th>
+    <th>Comment</th>
+    <% if admin_signed_in? then %>
     <th></th>
     <th></th>
     <th></th>
+    <% end %>
   </tr>
-
-<% @dramas.each do |drama| %>
-  <tr>
-    <td><%= drama.name %></td>
-    <% gr= drama.genre  %>
-    <td><%= gr.name %></td>
-    <td><% listCast=drama.cast_drama %>
-    	<% listCast.each do |a| %>
-            <%= link_to a.cast.name ,a.cast %>
-            <%= link_to '⊕', a.cast, :confirm => 'Are you sure?', :method => :delete %>
-        <% end %>
-        </br>
+	
+	<% arr = ('a'..'z').to_a %>
+	<% arr = arr << "other"%>
+	<% for i in 0..arr.length-1 %>
+		<% if @d[arr[i]] != nil %>
+			<tr>
+				<th rowspan=<%= @d[arr[i]].length%>>
+					<div><%= arr[i].upcase %></div>
+				</th>
+				<% @d[arr[i]].each do |j| %>
+				<% drama = @dramas[j]%>
+				<td style = "text-transform: capitalize;"><%= link_to drama.name, drama %></td>
+    			<% gr= drama.genre  %>
+    			<td><%= gr.name %></td>
+    			<td><% listCast=drama.cast_drama %>
+    			<% listCast.each do |a| %>
+            		<%= link_to a.cast.name ,a.cast %>
+            		<% if admin_signed_in? then %>
+            			<%= link_to '⊕', a.cast, :confirm => 'Are you sure?', :method => :delete %>
+            		<% end %>
+            		<br/>
+        		<% end %>
+        		</br>
         
-        <% @cd.drama_id=drama.id %>
-        <%= form_for @cd  , :url => { :action => "addcast" } do |f| %>
-            <div class="field">
-                <%= f.label :cast_id %>
-                <%= f.collection_select :cast_id, Cast.all - drama.cast_list, :id, :name %>
-            </div>
-            <div class="actions">
-                <%= f.hidden_field :drama_id ,:value => drama.id  %>
-                <%= f.submit "Add Cast #{@cd.drama_id}" %>
-            </div>
-        <% end %>
-        </br>
-	</td>	
+       			 <% if admin_signed_in? then %>
+        			<% @cd.drama_id=drama.id %>
+        			<%= form_for @cd  , :url => { :action => "addcast" } do |f| %>
+            			<div class="field">
+                		<%= f.label :cast_id %>
+                		<%= f.collection_select :cast_id, Cast.all - drama.cast_list, :id, :name %>
+            			</div>
+            			<div class="actions">
+                		<%= f.hidden_field :drama_id ,:value => drama.id  %>
+                		<%= f.submit "Add Cast #{@cd.drama_id}" %>
+            		</div>
+        			<% end %>
+        			<br/>
+        		<% end %>
+				</td>	
     
-    <td><%= drama.info %></td>
-    <td><%= drama.rating %></td>
-    <td><%= drama.episode %></td>
-    <td><%= link_to 'Show', drama %></td>
-    <td><%= link_to 'Edit', edit_drama_path(drama) %></td>
-    <td><%= link_to 'Destroy', drama, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+    			<td><%= drama.info %></td>
+    			<td><%= drama.rating %></td>
+    			<td><%= drama.episode %></td>
+    			<td><%= drama.like_num %></td>
+    			<td><%= drama.view %></td>
+    			<td><%= drama.comment.length %></td>
+    			<% if admin_signed_in? then %>
+    				<td><%= link_to 'Show', drama %></td>
+    				<td><%= link_to 'Edit', edit_drama_path(drama) %></td>
+    				<td><%= link_to 'Destroy', drama, :confirm => 'Are you sure?', :method => :delete %></td>
+    			<% end %>
+  			</tr>
+  			<% end %>
+			<% end %>
+			<% end %>
+
 </table>
+<br/>
 
-<br />
-
+<% if admin_signed_in? then %>
 <%= link_to 'New Drama', new_drama_path %>
 <% end %>
+</div>

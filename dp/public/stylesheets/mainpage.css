@@ -35,10 +35,11 @@ tr {
 td {
     background:#AFDCEC;
     border: none;
-    text-align:center;
     font: 1em "Century Gothic","Trebuchet MS",Arial,Helvetica,sans-   serif;
     color:#307D7E;
     padding:5px;
+    padding-left:20px;
+    text-transform:capitalize;
 }
 
 div.randomdrama{

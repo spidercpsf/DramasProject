@@ -21,11 +21,20 @@ class DramasController < ApplicationController
     @check=true
     if !admin_signed_in?
         @check = false
-        redirect_to (:controller => :home, :action => :index)
-        return
     end
 
-    @dramas = Drama.all
+    @dramas = Drama.all.sort_by{|a| a.name.downcase}
+    @d = {}
+    for i in 0..@dramas.length-1
+      x = @dramas[i].name[0,1].downcase
+      if x >= "a" and x <= "z" then 
+        if @d[x] == nil then @d[x] = Array.new end
+        @d[x] = @d[x] << i
+      else 
+        if @d["other"]== nil then @d["other"] = Array.new end
+        @d["other"] = @d["other"] << i
+      end      
+    end
     @cd= CastDrama.new
     respond_to do |format|
       format.html # index.html.erb

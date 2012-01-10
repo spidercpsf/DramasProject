@@ -21,9 +21,9 @@
   				<p>
 				<li><%= link_to('Home', :controller => 'home' , :action => :index) %></li>
 				<li style = "color:white">|</li>
-				<li><%= link_to('List Dramas', :controller => 'home' , :action => :index) %></li>
+				<li><%= link_to('List Dramas', :controller => 'dramas' , :action => :index) %></li>
 				<li style = "color:white">|</li>
-				<li><%= link_to('List Casts', :controller => 'home' , :action => :index) %></li>
+				<li><%= link_to('List Casts', :controller => 'casts' , :action => :index) %></li>
 				</p>
 		<% elsif admin_signed_in? then%>	
       			<p>Hi, <%= current_admin.email %></p>
