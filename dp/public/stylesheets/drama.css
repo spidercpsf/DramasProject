@@ -75,13 +75,13 @@ p.title{
     line-height: 1.5em;
 }
 
-#user_email{
+p.user_email{
 	color: #6E6A6B;
 	font-weight:bold;
 	padding:0px 30px;
 }
 
-#user_comment{
+p.user_comment{
 	padding: 0px 50px;
 }
 

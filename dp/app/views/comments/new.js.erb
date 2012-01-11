@@ -1,0 +1,4 @@
+$("text_area_comment").clear()
+$("comment_number").update("<%= @drama.comment.length %> Comments ")
+$("all_comments").update("<%=  escape_javascript(render ('dramas/comment_form')) %>");
+$("all_comments").effect("highlight", {}, 3000);
