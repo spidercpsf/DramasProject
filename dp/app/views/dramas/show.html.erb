@@ -2,7 +2,7 @@
   <p class = "dramatitle">
       <%= @drama.name %>
     </p>
-    
+   <div class = "drama_border"> 
   <div class = "poster">
   		<% if @drama.picture_data == nil %>
   		<%= image_tag 'no_poster.jpg', :height => '100%'%>
@@ -31,12 +31,11 @@
     </p>
     <p>
       <strong>Like:</strong>
-      <%= @drama.like_num %>
+      <span id = "like_number"> <%= @drama.like_num %></span>
     </p>
-
-
+    <p id = "plusone_button"> <%= render 'like_form' %></p>
   </div>
-  
+  </div>
   <p class = "title">Synopsis<p>
   <div class = "dramasynopsis">
     <p><%= @drama.info %>
@@ -44,12 +43,37 @@
   </div>
   <p class = "title">Cast</p>  
 	<div class = "dramacast">
-     <p>  
-        <% listCast=@drama.cast_drama %>
-        <% listCast.each do |a| %>
+     
+        <% if admin_signed_in? then %>
+                    <% listCast=@drama.cast_drama %>
+                    <% listCast.each do |a| %>
+                        <%= link_to a.cast.name ,a.cast %>
+                        <% if admin_signed_in? then %>
+                            <%= link_to '⊕', a.cast, :confirm => 'Are you sure?', :method => :delete %>
+                        <% end %>
+                        <br/>
+                    <% end %>
+                    
+        			
+        			<%= form_for @cd  , :url => { :action => "addcast" } do |f| %>
+            			<div class="field">
+                		<%= f.label :cast_id %>
+                		<%= f.collection_select :cast_id, Cast.all - @drama.cast_list, :id, :name %>
+            			</div>
+            			<div class="actions">
+                		<%= f.hidden_field :drama_id ,:value => @drama.id  %>
+                		<%= f.submit "Add Cast" %>
+            		</div>
+        			<% end %>
+        			<br/>
+        <% else %>
+            <p>  
+            <% listCast=@drama.cast_drama %>
+            <% listCast.each do |a| %>
                 <p><%= link_to a.cast.name , a.cast  %></p>
-         <% end %>
-     </p>
+            <% end %>
+            </p>
+        <% end %>
  	 </div>  
 	
 	<p class = "title">Write your comment</p>  

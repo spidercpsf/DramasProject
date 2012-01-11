@@ -1,4 +1,6 @@
 Dp::Application.routes.draw do
+  resources :cast_dramas
+
   resources :casts
 
  match 'comments/new' => 'comments#new' 

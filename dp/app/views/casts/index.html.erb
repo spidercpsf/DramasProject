@@ -1,25 +1,41 @@
-<h1>Listing casts</h1>
+<h1 class = "title" style = "text-align:center; color: #111111; font-size:3em;margin-bottom:30px">Listing Casts</h1>
 
-<table>
+<table class = "list" style = "width:100%;height:100%">
   <tr>
+  	<th style = "background: transparent"></th>
     <th>Name</th>
     <th>Info</th>
+    <% if admin_signed_in? then %>
     <th></th>
     <th></th>
     <th></th>
+    <% end %>
   </tr>
-
-<% @casts.each do |cast| %>
-  <tr>
-    <td><%= cast.name %></td>
-    <td><%= cast.info %></td>
-    <td><%= link_to 'Show', cast %></td>
-    <td><%= link_to 'Edit', edit_cast_path(cast) %></td>
-    <td><%= link_to 'Destroy', cast, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+	<% arr = ('a'..'z').to_a %>
+	<% arr = arr << "other"%>
+	<% for i in 0..arr.length-1 %>
+		<% if @c[arr[i]] != nil %>
+			<tr>
+				<th rowspan=<%= @c[arr[i]].length %>>
+					<div><%= arr[i].upcase %></div>
+				</th>
+				<% @c[arr[i]].each do |j| %>
+					<% cast = @casts[j]%>
+					<td style = "text-transform: capitalize;"	><%= cast.name %></td>
+    				<td><%= cast.info %></td>
+  				  	<% if admin_signed_in? then %>
+    					<td><%= link_to 'Show', cast %></td>
+    					<td><%= link_to 'Edit', edit_cast_path(cast) %></td>
+    					<td><%= link_to 'Destroy', cast, :confirm => 'Are you sure?', :method => :delete %></td>
+    				<% end %>
+    				<br/>
+    				</tr>
+				<% end %>
+			 <% end %>
+	<% end %>	
 </table>
-
 <br />
 
+<% if admin_signed_in? then %>
 <%= link_to 'New Cast', new_cast_path %>
+<% end %>

@@ -35,10 +35,15 @@ tr {
 td {
     background:#AFDCEC;
     border: none;
-    text-align:center;
     font: 1em "Century Gothic","Trebuchet MS",Arial,Helvetica,sans-   serif;
     color:#307D7E;
     padding:5px;
+    padding-left:20px;
+    text-transform:capitalize;
+}
+
+table.list td {
+	height:40px;
 }
 
 div.randomdrama{
@@ -47,5 +52,15 @@ div.randomdrama{
     top : 20px;
     left : 0px;
     width: 100%;
+    height: 100%;
+}
+
+div.shortinfo {
+	float:left;
+    position:relative;
+    left:10px;
+    margin-bottom:60px;
+    border-top:dotted 1px;
+    width: 48%;
     height: 100%;
 }

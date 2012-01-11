@@ -1,0 +1,9 @@
+<% if user_signed_in? then %>
+<% form_for @drama, :remote => :true, :url => {:controller => 'dramas' , :action => 'like' , :id => @drama, :method => :post} do |f| %>
+	<% if @drama.is_like(current_user.id) %>
+      <%= f.submit '-1', :class => 'plusone_bttn', :id => 'bttn' %>
+      <% else %>
+      <%= f.submit '+1', :class => 'plusone_bttn', :id => 'bttn' %>
+    <% end %>
+<% end %>
+<% end %>

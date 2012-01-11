@@ -11,13 +11,39 @@
 </p>
 </p>
     <b>List Drama:</b></br>
-    <% listDrama= @cast.cast_drama %>
-    <% listDrama.each do |a| %>
-        <% if a.drama!= nil %>
-            <%= link_to a.drama.name, a.drama %>
-            </br>
+    <% if admin_signed_in? then %>
+                    <% listDr =[] %>
+                    <% listDrama= @cast.cast_drama %>
+                    <% listDrama.each do |a| %>
+                        <%= link_to a.drama.name ,a.drama %>
+                        <% listDr = listDr + [a.drama] %>
+                        <% if admin_signed_in? then %>
+                            <%= link_to '⊕', a, :confirm => 'Are you sure?', :method => :delete %>
+                        <% end %>
+                        <br/>
+                    <% end %>
+        			<%= form_for @cd  , :url => {:controller => "dramas", :action => "addcast" } do |f| %>
+            			<div class="field">
+                		<%= f.label :drama_id %>
+                		<%= f.collection_select :drama_id, Drama.all-listDr, :id, :name %>
+            			</div>
+            			<div class="actions">
+                		<%= f.hidden_field :cast_id ,:value => @cast.id  %>
+                		<%= f.submit "Add Drama" %>
+            		</div>
+        			<% end %>
+        			<br/>
+        <% else %>
+            <p>  
+                <% listDrama= @cast.cast_drama %>
+                <% listDrama.each do |a| %>
+                    <% if a.drama!= nil %>
+                        <%= link_to a.drama.name, a.drama %>
+                        </br>
+                    <% end %>
+                <% end %>
+            </p>
         <% end %>
-    <% end %>
 </p>
 
 <%= link_to 'Edit', edit_cast_path(@cast) %> |

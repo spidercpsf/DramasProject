@@ -11,26 +11,35 @@
 <div id="container">
     <div id="header">
       <h1><a href="/">Drama Comments</a></h1>
-      <% if user_signed_in? then %>
       <div>
-      		<ul class="hmenu">
+         <ul class="hmenu">
+      <% if user_signed_in? then %>
       			<p>Hi, <%= current_user.email %></p>
       			<li><%= link_to('Edit registration', edit_user_registration_path) %></li>
       			<li style = "color:white">|</li>
   				<li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
-			</ul>
-		</div>	
+  				<p>
+				<li><%= link_to('Home', :controller => 'home' , :action => :index) %></li>
+				<li style = "color:white">|</li>
+				<li><%= link_to('List Dramas', :controller => 'dramas' , :action => :index) %></li>
+				<li style = "color:white">|</li>
+				<li><%= link_to('List Casts', :controller => 'casts' , :action => :index) %></li>
+				</p>
 		<% elsif admin_signed_in? then%>	
-			<div>
-      		<ul class="hmenu">
       			<p>Hi, <%= current_admin.email %></p>
       			<li><%= link_to('Edit registration', edit_admin_registration_path) %></li>
       			<li style = "color:white">|</li>
   				<li><%= link_to('Logout', destroy_admin_session_path, :method => :delete) %></li>
-			</ul>
-			</div>	
+  				<p>
+				<li><%= link_to('Home', :controller => 'home' , :action => :index) %></li>
+				<li style = "color:white">|</li>
+				<li><%= link_to('List Dramas', :controller => 'dramas' , :action => :index) %></li>
+				<li style = "color:white">|</li>
+				<li><%= link_to('List Casts', :controller => 'casts' , :action => :index) %></li>
+				</p>
 		<% end %>
-
+		</ul>
+		</div>
     </div>    
     <div id="wrapper" class="wat-cf">
       <div id="main">

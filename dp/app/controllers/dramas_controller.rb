@@ -21,11 +21,20 @@ class DramasController < ApplicationController
     @check=true
     if !admin_signed_in?
         @check = false
-        redirect_to (:controller => :home, :action => :index)
-        return
     end
 
-    @dramas = Drama.all
+    @dramas = Drama.all.sort_by{|a| a.name.downcase}
+    @d = {}
+    for i in 0..@dramas.length-1
+      x = @dramas[i].name[0,1].downcase
+      if x >= "a" and x <= "z" then 
+        if @d[x] == nil then @d[x] = Array.new end
+        @d[x] = @d[x] << i
+      else 
+        if @d["other"]== nil then @d["other"] = Array.new end
+        @d["other"] = @d["other"] << i
+      end      
+    end
     @cd= CastDrama.new
     respond_to do |format|
       format.html # index.html.erb
@@ -150,11 +159,8 @@ class DramasController < ApplicationController
       end
       @id= params[:id]
       @id_u = current_user.id
-
       @like = Like.new(:user_id => @id_u , :drama_id => @id)
-      
       @drama = Drama.find(@id)
-      
       @msg = "Insert unsuccessful"
       tmp = Like.find(:all, :conditions => "drama_id = #{@id} and user_id = #{@id_u}")
       if tmp.length > 0
@@ -169,7 +175,7 @@ class DramasController < ApplicationController
       end
       #redirect_to (:controller => :home, :action => :index)
       respond_to do |format|
-        format.html { redirect_to (:controller => :home, :action => :index)}
+        format.html {redirect_to (@drama)}
         format.js
       end 
   end
