@@ -34,6 +34,13 @@ div.showdrama{
     margin:auto;
 }
 
+div.drama_border{
+	float:left;
+	width: 100%;
+	height:230px;
+	border: dotted 2px gray;
+}
+
 div.dramainfo{
     float:left;
     position: relative;
@@ -41,6 +48,10 @@ div.dramainfo{
     top: 0px;
     width: 50%;
     height: 200px;
+}
+
+div.dramainfo p {
+	font-size:1.2em;
 }
 
 div.dramasynopsis{

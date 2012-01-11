@@ -2,7 +2,7 @@
   <p class = "dramatitle">
       <%= @drama.name %>
     </p>
-    
+   <div class = "drama_border"> 
   <div class = "poster">
   		<% if @drama.picture_data == nil %>
   		<%= image_tag 'no_poster.jpg', :height => '100%'%>
@@ -35,7 +35,7 @@
     </p>
     <p id = "plusone_button"> <%= render 'like_form' %></p>
   </div>
-  
+  </div>
   <p class = "title">Synopsis<p>
   <div class = "dramasynopsis">
     <p><%= @drama.info %>

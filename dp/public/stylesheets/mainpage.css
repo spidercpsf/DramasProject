@@ -42,6 +42,10 @@ td {
     text-transform:capitalize;
 }
 
+table.list td {
+	height:40px;
+}
+
 div.randomdrama{
     float:left;
     position:relative;
