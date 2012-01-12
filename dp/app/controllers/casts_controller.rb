@@ -35,6 +35,12 @@ class CastsController < ApplicationController
   # GET /casts/new
   # GET /casts/new.xml
   def new
+      @check=true
+      if !admin_signed_in?
+          @check = false
+          redirect_to (:controller => :home, :action => :index)
+          return
+      end
     @cast = Cast.new
 
     respond_to do |format|
@@ -45,12 +51,24 @@ class CastsController < ApplicationController
 
   # GET /casts/1/edit
   def edit
+      @check=true
+      if !admin_signed_in?
+          @check = false
+          redirect_to (:controller => :home, :action => :index)
+          return
+      end
     @cast = Cast.find(params[:id])
   end
 
   # POST /casts
   # POST /casts.xml
   def create
+      @check=true
+      if !admin_signed_in?
+          @check = false
+          redirect_to (:controller => :home, :action => :index)
+          return
+      end
     @cast = Cast.new(params[:cast])
 
     respond_to do |format|
@@ -67,6 +85,12 @@ class CastsController < ApplicationController
   # PUT /casts/1
   # PUT /casts/1.xml
   def update
+      @check=true
+      if !admin_signed_in?
+          @check = false
+          redirect_to (:controller => :home, :action => :index)
+          return
+      end
     @cast = Cast.find(params[:id])
 
     respond_to do |format|
@@ -83,9 +107,20 @@ class CastsController < ApplicationController
   # DELETE /casts/1
   # DELETE /casts/1.xml
   def destroy
+      @check=true
+      if !admin_signed_in?
+          @check = false
+          redirect_to (:controller => :home, :action => :index)
+          return
+      end
     @cast = Cast.find(params[:id])
+      #delete all related object
+      @listFilm = @cast.cast_drama
+      @listFilm.each do |@f|
+          @f.destroy
+      end
     @cast.destroy
-
+    
     respond_to do |format|
       format.html { redirect_to(casts_url) }
       format.xml  { head :ok }

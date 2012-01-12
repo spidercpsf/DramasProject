@@ -145,6 +145,12 @@ class DramasController < ApplicationController
     end
 
     @drama = Drama.find(params[:id])
+      #delete all related object
+      @listCast1 = @drama.cast_drama
+      @listCast1.each do |@C|
+          @C.destroy
+      end
+
     @drama.destroy
 
     respond_to do |format|

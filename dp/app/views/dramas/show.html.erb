@@ -49,7 +49,7 @@
                     <% listCast.each do |a| %>
                         <%= link_to a.cast.name ,a.cast %>
                         <% if admin_signed_in? then %>
-                            <%= link_to '⊕', a.cast, :confirm => 'Are you sure?', :method => :delete %>
+                            <%= link_to '⊕', a, :confirm => 'Are you sure?', :method => :delete %>
                         <% end %>
                         <br/>
                     <% end %>

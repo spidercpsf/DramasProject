@@ -75,10 +75,11 @@ class CommentsController < ApplicationController
   # DELETE /comments/1.xml
   def destroy
     @comment = Comment.find(params[:id])
+    @drama = Drama.find(@comment.drama_id)
     @comment.destroy
-
+      
     respond_to do |format|
-      format.html { redirect_to(comments_url) }
+      format.html { redirect_to(@drama, :notice => 'Drama was successfully updated.') }
       format.xml  { head :ok }
     end
   end
