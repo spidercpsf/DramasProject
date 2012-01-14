@@ -66,32 +66,27 @@
 	<% if user_signed_in? %>
 	<p class = "main_title" style = "border-bottom : dotted 1px; line-height:2em;">YOUR FAVORITE DRAMAS - LATEST COMMENTS</p>
 		<div class = "favorite_drama">
-		<% current_user.drama.each do |d| %>
-		<p style = "text-transform:capitalize;font-size : 1.2em;"><strong><%= link_to d.name, d %></strong></p>
-		<% allcom = d.comment %>	
-		<% l = allcom.length %>
-		<% if l > 0 %>
-		<% cmt = allcom[l-1] %>
+			<% @allcom.each do |cmt| %>
+			<p style = "text-transform:capitalize;font-size : 1.2em;"><strong><%= link_to cmt.drama.name, cmt.drama %></strong></p>
 		
-		<p class = "user_email">
-       	#<%= l+1 %>. 
-        <% if user_signed_in? && cmt.user_id == current_user.id then %>
-        You
-        <% else%>
-        <%= User.find(cmt.user_id).email %>
-        <% end %> posted
-        <% if (Time.now-cmt.created_at).to_i <= 82800 then %>
-        <%= time_ago_in_words(cmt.created_at) %> ago
-        <% else %>
-        at <%= cmt.created_at%>
-        <% end %>
-        </p>
-        <p class = "user_comment">
-        <%= cmt.comment %>
-        </p>
-		
-		<% end %>
-		<% end %>
+			<p class = "user_email">
+        	<% if user_signed_in? && cmt.user_id == current_user.id then %>
+        		You
+        	<% else%>
+        		<%= cmt.user.email %>
+        	<% end %> 
+        		posted
+        	<% if (Time.now-cmt.created_at).to_i <= 82800 then %>
+        		<%= time_ago_in_words(cmt.created_at) %> ago
+       	 	<% else %>
+        		at <%= cmt.created_at%>
+        	<% end %>
+        	</p>
+       	
+       		 <p class = "user_comment">
+        	<%= cmt.comment %>
+        	</p>
+			<% end %>
 	<% end %>
 	</div>
 </div>	

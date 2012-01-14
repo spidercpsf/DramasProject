@@ -1,10 +1,10 @@
 class Drama < ActiveRecord::Base
 	belongs_to :genre
-	has_many :cast
-    has_many :cast_drama
+	has_many :cast, :through => :cast_drama
     has_many :like
     has_many :user, :through => :like
     has_many :comment
+    has_many :cast_drama
     def cast_num
         listCast=self.cast_drama
         return listCast.length
