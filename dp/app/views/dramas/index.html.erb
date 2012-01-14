@@ -4,8 +4,7 @@
   <tr>
   	<th style = "background: transparent"></th>
     <th>Name</th>
-    <th>Genre</th>
-    <!-- <th>Cast</th>
+<!--     <th>Genre</th> -->    <!-- <th>Cast</th>
     <th>Info</th> -->
     <th>Rating</th>
     <th>Episode</th>
@@ -29,8 +28,7 @@
 				<% @d[arr[i]].each do |j| %>
 				<% drama = @dramas[j]%>
 				<td style = "text-transform: capitalize;"><%= link_to drama.name, drama %></td>
-    			<% gr= drama.genre  %>
-    			<td><%= gr.name %></td>
+    			
     			<!-- <td><% listCast=drama.cast_drama %>
     			<% listCast.each do |a| %>
             		<%= link_to a.cast.name ,a.cast %>

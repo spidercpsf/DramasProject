@@ -46,7 +46,7 @@ div.dramainfo{
     float:left;
     position: relative;
     left: 100px;
-    top: 0px;
+    top: 10px;
     width: 50%;
     height: 200px;
 }
@@ -60,7 +60,7 @@ div.dramasynopsis{
     position: relative;
     left: 20px;
     top: 20px;
-    width: 97%;
+    width: 90%;
     height: 100%;
     padding:0px 50px;
 }
