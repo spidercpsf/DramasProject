@@ -1,4 +1,5 @@
 <div class = "mainpage">
+	<p class = "main_title" style = "border-bottom : dotted 1px; line-height:2em;">TOP DRAMAS</p>
 	<div class = "toptable">
     <table class = "topten" id = "mostplusone">
     	<tr id = "0">
@@ -46,27 +47,51 @@
         <% end %>
 	</table>
 	</div>
+	<p class = "main_title">RANDOM DRAMAS</p>
 	<div class = "randomdrama">
 	  <div> 
 	    </div>
         <table class = "random">
-            <!-- <tr>
-                <th>Name</th>
-                <th>Genre</th>
-                <th>Cast</th>
-                <th>Info</th>
-                <th>Rating</th>
-                <th>Episode</th>
-                <th>Like</th>
-                <th>Comment</th>
-                <th>View</th>
-            </tr> -->
-            <% @dramas.each do |d| %>
-            	<% @drama = d %>
-              <div id = "drama_<%= d.id %>">
-                <%= render 'drama_form' %>
-              </div>
+        	<% randomdrama = @dramas.shuffle%>
+            <% for i in 0..3 %>
+            	<% @drama = randomdrama[i] %>
+            	<% if @drama != nil %>
+              		<div id = "drama_<%= @drama.id %>">
+                	<%= render 'drama_form' %>
+             	 </div>
+             	 <% end %>
             <% end %>
         </table>
+	</div>
+	<% if user_signed_in? %>
+	<p class = "main_title" style = "border-bottom : dotted 1px; line-height:2em;">YOUR FAVORITE DRAMAS - LATEST COMMENTS</p>
+		<div class = "favorite_drama">
+		<% current_user.drama.each do |d| %>
+		<p style = "text-transform:capitalize;font-size : 1.2em;"><strong><%= link_to d.name, d %></strong></p>
+		<% allcom = d.comment %>	
+		<% l = allcom.length %>
+		<% if l > 0 %>
+		<% cmt = allcom[l-1] %>
+		
+		<p class = "user_email">
+       	#<%= l+1 %>. 
+        <% if user_signed_in? && cmt.user_id == current_user.id then %>
+        You
+        <% else%>
+        <%= User.find(cmt.user_id).email %>
+        <% end %> posted
+        <% if (Time.now-cmt.created_at).to_i <= 82800 then %>
+        <%= time_ago_in_words(cmt.created_at) %> ago
+        <% else %>
+        at <%= cmt.created_at%>
+        <% end %>
+        </p>
+        <p class = "user_comment">
+        <%= cmt.comment %>
+        </p>
+		
+		<% end %>
+		<% end %>
+	<% end %>
 	</div>
 </div>	

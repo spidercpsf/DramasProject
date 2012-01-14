@@ -3,7 +3,7 @@ class Drama < ActiveRecord::Base
 	has_many :cast
     has_many :cast_drama
     has_many :like
-    has_many :user
+    has_many :user, :through => :like
     has_many :comment
     def cast_num
         listCast=self.cast_drama
