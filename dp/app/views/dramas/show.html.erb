@@ -63,12 +63,10 @@
         			<% end %>
         			<br/>
         <% else %>
-            <p>  
-            <% listCast=@drama.cast_drama %>
-            <% listCast.each do |a| %>
-                <p><%= link_to a.cast.name , a.cast  %></p>
-            <% end %>
-            </p>
+            <% listCast=@drama.cast_drama.sort_by{|a| a.cast.name} %>
+                    <% listCast.each do |a| %>
+                        <li style = "font-size:1.2em;line-height:2em;"><%= link_to a.cast.name ,a.cast %></li>
+                    <% end %>
         <% end %>
  	 </div>  
 	
