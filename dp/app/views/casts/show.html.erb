@@ -28,11 +28,10 @@
         			<% end %>
         			<br/>
         <% else %>
-             
-                <% listDrama= @cast.cast_drama.drama.sort_by{|a| a.name.downcase} %>
+                <% listDrama= @cast.cast_drama.sort_by{|a| a.drama.name.downcase} %>
                 <% listDrama.each do |a| %>
                     <% if a.drama!= nil %>
-                        <li> <%= link_to a.drama.name, a.drama %></li>
+                        <li style = "font-size : 1.3em"> <%= link_to a.drama.name, a.drama %></li>
                         </br>
                     <% end %>
                 <% end %>
