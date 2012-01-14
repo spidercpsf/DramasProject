@@ -4,7 +4,6 @@
   <tr>
   	<th style = "width:100px;background: transparent"></th>
     <th>Name</th>
-<!--     <th>Info</th> -->
     <% if admin_signed_in? then %>
     <th></th>
     <th></th>
@@ -21,18 +20,15 @@
 				<% @c[arr[i]].each do |j| %>
 					<% cast = @casts[j]%>
 					<td style = "text-transform: capitalize;"	><%= link_to cast.name, cast %></td>
-<!--     				<td><%= cast.info %></td> -->
   				  	<% if admin_signed_in? then %>
     					<td><%= link_to 'Edit', edit_cast_path(cast) %></td>
     					<td><%= link_to 'Destroy', cast, :confirm => 'Are you sure?', :method => :delete %></td>
     				<% end %>
-    				<br/>
     				</tr>
 				<% end %>
 			 <% end %>
 	<% end %>	
 </table>
-<br />
 <% if admin_signed_in? then %>
 <div style = "font-size:1.5em;margin:10px 300px;"><li> <%= link_to 'New Cast', new_cast_path %> </li> </div>
 <% end %>
