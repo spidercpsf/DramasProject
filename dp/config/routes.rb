@@ -1,5 +1,5 @@
 Dp::Application.routes.draw do
-  resources :cast_dramas
+  resources :cast_drama
 
   resources :casts
 

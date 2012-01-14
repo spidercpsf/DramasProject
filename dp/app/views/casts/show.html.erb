@@ -1,27 +1,20 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
-  <%= @cast.name %>
+<div class = "showcast">
+<p class = "casttitle"><%= @cast.name %></div>
 </p>
-
-<p>
-  <b>Info:</b>
-  <%= @cast.info %>
-</p>
-</p>
-    <b>List Drama:</b></br>
+    <p class = "listcast_title">List Drama:</p></br>
+    <div class = "listcast">
     <% if admin_signed_in? then %>
                     <% listDr =[] %>
-                    <% listDrama= @cast.cast_drama %>
+                    <% listDrama= @cast.cast_drama.sort_by{|a| a.drama.name.downcase} %>
                     <% listDrama.each do |a| %>
-                        <%= link_to a.drama.name ,a.drama %>
+                        <li style = "font-size:1.3em;text-transform: capitalize;"><%= link_to a.drama.name ,a.drama %>
                         <% listDr = listDr + [a.drama] %>
                         <% if admin_signed_in? then %>
-                            <%= link_to '⊕', a, :confirm => 'Are you sure?', :method => :delete %>
-                        <% end %>
+                            <%= link_to '⊕', a, :confirm => 'Are you sure?', :method => :delete, :cast_id => @cast.id %>
+                        <% end %></li>
                         <br/>
                     <% end %>
+                    <% if (Drama.all-listDr).length != 0 then %>
         			<%= form_for @cd  , :url => {:controller => "dramas", :action => "addcast" } do |f| %>
             			<div class="field">
                 		<%= f.label :drama_id %>
@@ -32,23 +25,17 @@
                 		<%= f.submit "Add Drama" %>
             		</div>
         			<% end %>
+        			<% end %>
         			<br/>
         <% else %>
-            <p>  
-                <% listDrama= @cast.cast_drama %>
+             
+                <% listDrama= @cast.cast_drama.drama.sort_by{|a| a.name.downcase} %>
                 <% listDrama.each do |a| %>
                     <% if a.drama!= nil %>
-                        <%= link_to a.drama.name, a.drama %>
+                        <li> <%= link_to a.drama.name, a.drama %></li>
                         </br>
                     <% end %>
                 <% end %>
-            </p>
         <% end %>
-</p>
-
-<% if admin_signed_in? %>
-<%= link_to 'Edit', edit_cast_path(@cast) %> |
-<% end %>
-
-<%= link_to 'Back', casts_path %>
-
+        </div>
+</div>

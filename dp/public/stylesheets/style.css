@@ -136,3 +136,31 @@ div .dramalisting {
 h1 .title{
 	text-align:center;
 }
+
+p.casttitle {
+    position:relative;
+    top: 0px;
+    text-align:center;
+    color:#111111;
+    text-transform: capitalize;
+    font-size: 3em;
+}
+
+div.listcast{
+	width:80%;
+	position:relative;
+    top: -50px;
+    left:150px;	
+}
+
+p.listcast_title {
+	width:80%;
+	position:relative;
+    top: 0px;
+    color:#111111;
+    text-transform: capitalize;
+    font-size: 1.5em;
+    margin:50px 100px;
+    line-height:2em;
+    border-bottom:2px solid gray;
+}

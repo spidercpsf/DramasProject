@@ -89,7 +89,7 @@
                 <% elsif admin_signed_in? %>
                 	<%= f.hidden_field :admin_id ,:value => current_admin.id  %>
                 <% end %>
-                <%= f.submit "Post Comment" %>
+                <%= f.submit "Post Comment", :class => "post_button" %>
             </div>
         <% end %>
 	</div>

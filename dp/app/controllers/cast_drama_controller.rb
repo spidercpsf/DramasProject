@@ -8,7 +8,7 @@ class CastDramaController < ApplicationController
         @cd.destroy
         
         respond_to do |format|
-            format.html { redirect_to(castdramas_url) }
+            format.html { redirect_to(:back) }
             format.xml  { head :ok }
         end
     end

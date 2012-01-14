@@ -14,6 +14,10 @@ class DramasController < ApplicationController
                 @msg= "Insert successfull"
             end
         end
+        
+        respond_to do |format|
+            format.html { redirect_to(:back) }
+        end
   end
   # GET /dramas
   # GET /dramas.xml

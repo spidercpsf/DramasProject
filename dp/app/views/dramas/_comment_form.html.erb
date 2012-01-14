@@ -5,18 +5,22 @@
   		  		<% cmt = comments[cmtlength-1-i]%>
         		  <p class = "user_email">
         	  		#<%= cmtlength-i %>. 
-        	  		<%= User.find(cmt.user_id).email %> posted
+        	  			<% if user_signed_in? && cmt.user_id == current_user.id then %>
+        	  		You
+        	  		<% else%>
+        	  		<%= User.find(cmt.user_id).email %>
+        	  		<% end %> posted
         	  		<% if (Time.now-cmt.created_at).to_i <= 82800 then %>
         	  		<%= time_ago_in_words(cmt.created_at) %> ago
         	  		<% else %>
         	  		at <%= cmt.created_at%>
         	  	<% end %>
+        	  	<% if user_signed_in? && cmt.user_id == current_user.id then %>
+                            <%= link_to 'Delete', cmt, :confirm => 'Are you sure to delete this comment?', :method => :delete %>
+                    <% end %>
         	  	</p>
         	  	<p class = "user_comment">
         	  		<%= cmt.comment %>
-                    <% if cmt.user_id == current_user.id then %>
-                            <%= link_to '⊕', cmt, :confirm => 'Are you sure?', :method => :delete %>
-                    <% end %>
         	  	</p>
       		<% end %>
  	<% end %>	
