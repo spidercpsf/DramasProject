@@ -41,17 +41,17 @@
 	<div class = "dramacast">
      
         <% if admin_signed_in? then %>
-                    <% listCast=@drama.cast_drama %>
+                    <% listCast=@drama.cast_drama.sort_by{|a| a.cast.name} %>
                     <% listCast.each do |a| %>
-                        <%= link_to a.cast.name ,a.cast %>
+                        <li style = "font-size:1.2em;line-height:2em;"><%= link_to a.cast.name ,a.cast %>
                         <% if admin_signed_in? then %>
                             <%= link_to '⊕', a, :confirm => 'Are you sure?', :method => :delete %>
-                        <% end %>
-                        <br/>
+                        <% end %></li>
                     <% end %>
                     
         			
         			<%= form_for @cd  , :url => { :action => "addcast" } do |f| %>
+        				<br/>
             			<div class="field">
                 		<%= f.label :cast_id %>
                 		<%= f.collection_select :cast_id, Cast.all - @drama.cast_list, :id, :name %>
