@@ -3,6 +3,7 @@ Dp::Application.routes.draw do
 
   resources :casts
 
+  match 'admins/sign_up' => 'home#index'
  match 'comments/new' => 'comments#new' 
  resources :comments
 
@@ -11,6 +12,7 @@ Dp::Application.routes.draw do
   devise_for :admins
   devise_scope :admin do
     get "admins/sign_out", :to => "devise/sessions#destroy"
+    
   end
   
   devise_for :users

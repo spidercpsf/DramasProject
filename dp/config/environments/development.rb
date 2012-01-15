@@ -22,5 +22,16 @@ Dp::Application.configure do
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
+  
+  config.action_mailer.default_url_options [:host] = "gmail.com"
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    :address => 'smtp.gmail.com',
+    :port => 587,
+    :authentication => :login,
+    :user_name => 'dramasfc',
+    :password => 'hustman123',
+    :domain => 'gmail.com'
+  }
 end
 
