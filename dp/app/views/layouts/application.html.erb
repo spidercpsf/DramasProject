@@ -31,6 +31,7 @@
       			<li><%= link_to('Edit registration', edit_admin_registration_path) %></li>
       			<li style = "color:white">|</li>
   				<li><%= link_to('Logout', destroy_admin_session_path, :method => :delete) %></li>
+  				<% if !current_page?(edit_admin_registration_path) %>
   				<p>
 				<li><%= link_to('Home', :controller => 'home' , :action => :index) %></li>
 				<li style = "color:white">|</li>
@@ -38,6 +39,7 @@
 				<li style = "color:white">|</li>
 				<li><%= link_to('List Casts', :controller => 'casts' , :action => :index) %></li>
 				</p>
+				<% end %>
 		<% end %>
 		</ul>
 		</div>
